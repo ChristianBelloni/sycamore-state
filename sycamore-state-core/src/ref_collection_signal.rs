@@ -12,7 +12,7 @@ pub struct RefCollectionSignal<'a, T> {
 impl<'a, T> Clone for RefCollectionSignal<'a, T> {
     fn clone(&self) -> Self {
         Self {
-            inner: self.inner.clone(),
+            inner: <&Signal<Vec<&Signal<T>>>>::clone(&self.inner),
         }
     }
 }
@@ -83,7 +83,8 @@ impl<'a, T> RefCollectionSignal<'a, T> {
         self.inner
             .get()
             .iter()
-            .find(|a| f(&a.get())).map(|a| a.get())
+            .find(|a| f(&a.get()))
+            .map(|a| a.get())
     }
 
     /// Remove value from collection by index
@@ -108,7 +109,7 @@ impl<'a, T> RefCollectionSignal<'a, T> {
     /// # value.expect("found item");
     /// # assert_eq!(collection.get().len(), 3);
     ///```
-    pub fn remove_where<'b, F: Fn(&T) -> bool>(&'b self, f: F) -> Option<Rc<T>> {
+    pub fn remove_where<F: Fn(&T) -> bool>(&self, f: F) -> Option<Rc<T>> {
         self.position(f).map(|index| self.remove(index))
     }
 }
