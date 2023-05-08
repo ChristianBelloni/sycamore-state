@@ -1,5 +1,9 @@
 # Derive macro for State Management
 ## Overview
+[![Crates.io][crates-badge]][crates-url]
+
+[crates-badge]: https://img.shields.io/crates/v/sycamore-state-manager.svg
+[crates-url]: https://crates.io/crates/sycamore-state-manager
 
 sycamore-state is a utility library for better state management using sycamore's reactive primitives
 
