@@ -33,7 +33,7 @@ if you think there are possible unsafe errors feel free to open an [`issue`](htt
 ## Usage
 ```rust
 #[derive(Debug, State, Clone)]
-#[state(clone, eq, debug)] // avaliable derive macros are: (clone, debug, eq, ord)
+#[state(clone, eq, debug)] // available derive macros are: (clone, debug, eq, ord)
 pub struct MyState<'a> {
     pub field_1: String,
     pub field_2: u32,
