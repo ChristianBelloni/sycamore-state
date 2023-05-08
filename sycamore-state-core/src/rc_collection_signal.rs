@@ -26,7 +26,7 @@ impl<T> RcCollectionSignal<T> {
     /// Push new value into collection
     ///
     /// ```rust
-    /// # use inner::RcCollectionSignal;
+    /// # use sycamore_state_core::RcCollectionSignal;
     /// let collection = RcCollectionSignal::new(vec![1,2,3,4]);
     /// collection.push(8);
     /// # assert_eq!(collection.get().len(), 5);
@@ -39,7 +39,7 @@ impl<T> RcCollectionSignal<T> {
     /// Get position of value in collection
     ///
     /// ```rust
-    /// # use inner::RcCollectionSignal;
+    /// # use sycamore_state_core::RcCollectionSignal;
     /// let collection = RcCollectionSignal::new(vec![1,2,3,4]);
     /// let value = collection.find(|a| *a == 3);
     /// # value.expect("found item");
@@ -52,7 +52,7 @@ impl<T> RcCollectionSignal<T> {
     /// Find value in collection
     ///
     /// ```rust
-    /// # use inner::RcCollectionSignal;
+    /// # use sycamore_state_core::RcCollectionSignal;
     /// let collection = RcCollectionSignal::new(vec![1,2,3,4]);
     /// let value = collection.find(|a| *a == 3);
     /// # value.expect("found item");
@@ -69,10 +69,9 @@ impl<T> RcCollectionSignal<T> {
     /// Remove value from collection by index
     ///
     /// ```rust
-    /// # use inner::RcCollectionSignal;
+    /// # use sycamore_state_core::RcCollectionSignal;
     /// let collection = RcCollectionSignal::new(vec![1,2,3,4]);
     /// let value = collection.remove(2);
-    /// # value.expect("found item");
     /// # assert_eq!(collection.get().len(), 3);
     ///```
     pub fn remove(&self, index: usize) -> Rc<T> {
@@ -82,7 +81,7 @@ impl<T> RcCollectionSignal<T> {
     /// Remove value from collection with predicate
     ///
     /// ```rust
-    /// # use inner::RcCollectionSignal;
+    /// # use sycamore_state_core::RcCollectionSignal;
     /// let collection = RcCollectionSignal::new(vec![1,2,3,4]);
     /// let value = collection.remove_where(|a| *a == 3);
     /// # value.expect("found item");
