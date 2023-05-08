@@ -1,5 +1,5 @@
 # Derive macro for State Management
-## Overview
+
 [![Crates.io][crates-badge]][crates-url]
 [![Docs.rs][docs-badge]][docs-url]
 
@@ -8,6 +8,8 @@
 
 [docs-url]: https://docs.rs/sycamore-state-manager/0.0.2/sycamore_state_manager/
 [docs-badge]: https://img.shields.io/docsrs/sycamore-state-manager/latest
+
+## Overview
 
 sycamore-state is a utility library for better state management using sycamore's reactive primitives
 
