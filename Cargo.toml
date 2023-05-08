@@ -7,8 +7,8 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-inner_macros = { path = "./inner_macros", version = "0.0.1" }
-inner = { path = "./inner", version = "0.0.1" }
+inner_macros = { git = "https://github.com/ChristianBelloni/sycamore-state.git", version = "0.0.1" }
+inner = { git = "https://github.com/ChristianBelloni/sycamore-state.git", version = "0.0.1" }
 
 sycamore = { version = "0.9.0-beta.1", features = [
     "suspense",
