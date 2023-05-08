@@ -15,8 +15,10 @@ if you think there are possible unsafe errors feel free to open an [`issue`](htt
 
 ## Planned Features
 
- - [ ] Better compile errors for easier debugging
- - [ ] Support for Command bindings
+ - [ ] Better compile errors
+ - [ ] Support for closure bindings
+ - [ ] Support for derived state
+ - [ ] macro for automatic context providing
 
 ## Usage
 ```rust
