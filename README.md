@@ -1,7 +1,7 @@
  # Derive macro for State Management
 
  ## Usage
-
+```rust
  #[derive(Debug, State, Clone)]
  #[state(clone, eq, debug)] // avaliable derive macros are: (clone, debug, eq, ord)
  pub struct MyState<'a> {
@@ -60,4 +60,4 @@
      pub field_1: &'stateful Signal<i64>,
      pub collection: RefCollectionSignal<'stateful, &'a str>,
  }
- 
+ ```
