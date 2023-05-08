@@ -70,6 +70,10 @@ impl<'a, K: Hash + Eq + Send + Sync + Clone + 'a, V: Send + Sync + Clone + 'a>
             }),
         );
     }
+
+    pub fn remove(&self, key: &K) {
+        self.inner.modify().remove(key);
+    }
 }
 
 #[cfg(test)]
