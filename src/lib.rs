@@ -49,7 +49,7 @@
 //!# }
 //! ```
 
-pub use inner::{RcCollectionSignal, RefCollectionSignal};
+pub use sycamore_state_core::{RcCollectionSignal, RefCollectionSignal};
 
 #[doc(inline)]
 /// Derive macro for State Management
@@ -120,4 +120,4 @@ pub use inner::{RcCollectionSignal, RefCollectionSignal};
 ///     pub collection: RefCollectionSignal<'stateful, &'a str>,
 /// }
 /// ```
-pub use inner_macros::State;
+pub use sycamore_state_macros::State;

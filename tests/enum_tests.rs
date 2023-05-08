@@ -1,5 +1,5 @@
-use inner_macros::State;
 use sycamore::reactive::{create_effect, create_scope, create_signal};
+use sycamore_state_macros::State;
 
 #[derive(State, Clone)]
 #[state(clone)]
