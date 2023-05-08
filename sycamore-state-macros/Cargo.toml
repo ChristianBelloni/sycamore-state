@@ -9,7 +9,7 @@ description = "sycamore-state proc macro implementation"
 proc-macro = true
 
 [dependencies]
-sycamore-state-core = { path = "../sycamore-state-core" }
+sycamore-state-core = { path = "../sycamore-state-core", version = "0.0.1" }
 syn = { version = "2.0.15", features = ["full", "extra-traits"] }
 quote = "1.0.26"
 proc-macro2 = "1.0.56"
