@@ -62,8 +62,7 @@ impl<T> RcCollectionSignal<T> {
         self.inner
             .get()
             .iter()
-            .find(|a| f(&a.get()))
-            .and_then(|a| Some(a.get()))
+            .find(|a| f(&a.get())).map(|a| a.get())
     }
 
     /// Remove value from collection by index
@@ -88,11 +87,7 @@ impl<T> RcCollectionSignal<T> {
     /// # assert_eq!(collection.get().len(), 3);
     ///```
     pub fn remove_where<F: Fn(&T) -> bool>(&self, f: F) -> Option<Rc<T>> {
-        if let Some(index) = self.position(f) {
-            Some(self.remove(index))
-        } else {
-            None
-        }
+        self.position(f).map(|index| self.remove(index))
     }
 }
 

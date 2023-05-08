@@ -74,13 +74,13 @@ impl<'a, K: Hash + Eq + Send + Sync + Clone + 'a, V: Send + Sync + Clone + 'a>
 
 #[cfg(test)]
 mod tests {
-    use std::{collections::HashMap, ops::Deref};
+    use std::{collections::HashMap};
 
     use crate::RcHashMapSignal;
 
     #[test]
     pub fn hashmap_test() {
-        let mut map = HashMap::default();
+        let map = HashMap::default();
         let map = RcHashMapSignal::new(map);
         map.insert("hello", 3);
         map.insert("hello2", 5);
@@ -88,7 +88,7 @@ mod tests {
         map.insert("hello6", 8);
         map.insert("hello7", 59);
         assert_eq!(map.get().len(), 5);
-        for (k, v) in map.get().iter() {
+        for (_k, v) in map.get().iter() {
             v.remove();
         }
         assert_eq!(map.get().len(), 0);
