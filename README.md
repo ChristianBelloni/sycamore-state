@@ -5,9 +5,18 @@ sycamore-state is a utility library for better state management using sycamore's
 
 the main features of this crate are the [`State`](State) derive macro and the Rc/Ref Collection signal types
 
-currently for lifetime management this crate uses widely [`sycamore::reactive::create_signal_unsafe`],\n
+currently for lifetime management this crate uses widely `sycamore::reactive::create_signal_unsafe`
 if you think there are possible unsafe errors feel free to open an [`issue`](https://github.com/ChristianBelloni/sycamore-state/issues)
 
+## Current Features
+
+ - [x] Support for Generic States
+ - [x] Support for lifetimes
+
+## Planned Features
+
+ - [ ] Better compile errors for easier debugging
+ - [ ] Support for Command bindings
 
 ## Usage
 ```rust
