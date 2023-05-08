@@ -10,7 +10,7 @@
 //! # Usage
 //!
 //! ```rust
-//! # use sycamore_state::State;
+//! # use sycamore_state_manager::State;
 //!
 //! #[derive(Debug, State, Clone)]
 //! #[state(clone, eq, debug)] // available derive macros are: (clone, debug, eq, ord)
@@ -57,7 +57,7 @@ pub use sycamore_state_core::{RcCollectionSignal, RefCollectionSignal};
 /// # Usage
 ///
 /// ```rust
-/// # use sycamore_state::State;
+/// # use sycamore_state_manager::State;
 ///
 /// #[derive(Debug, State, Clone)]
 /// #[state(clone, eq, debug)] // avaliable derive macros are: (clone, debug, eq, ord)

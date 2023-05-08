@@ -42,7 +42,7 @@ impl FieldWrapper {
             last.ident = format_rc_ident(&last.ident);
         }
         *new_field.mut_ty() =
-            Type::Verbatim(quote! { ::sycamore_state::RcCollectionSignal<#inner_type>});
+            Type::Verbatim(quote! { ::sycamore_state_manager::RcCollectionSignal<#inner_type>});
 
         new_field
     }
@@ -61,7 +61,7 @@ impl FieldWrapper {
         let mut new_field = field.clone();
 
         *new_field.mut_ty() =
-            Type::Verbatim(quote! { ::sycamore_state::RcCollectionSignal<#inner_type>});
+            Type::Verbatim(quote! { ::sycamore_state_manager::RcCollectionSignal<#inner_type>});
 
         new_field
     }
@@ -135,7 +135,7 @@ impl FieldWrapper {
         };
 
         Expr::Verbatim(quote! {
-            ::sycamore_state::RcCollectionSignal::new(data.#ident.into_iter().map(|a| #inner_type))
+            ::sycamore_state_manager::RcCollectionSignal::new(data.#ident.into_iter().map(|a| #inner_type))
         })
     }
     fn rc_struct_stateful_ctor<F: GetSetType>(field: &F) -> Expr {
@@ -154,7 +154,7 @@ impl FieldWrapper {
     fn rc_struct_collection_ctor<F: GetSetType>(field: &F) -> Expr {
         let ident = field.ident();
         Expr::Verbatim(quote! {
-            ::sycamore_state::RcCollectionSignal::new(data.#ident)
+            ::sycamore_state_manager::RcCollectionSignal::new(data.#ident)
         })
     }
     fn rc_struct_bare_ctor<F: GetSetType>(field: &F) -> Expr {
@@ -175,7 +175,7 @@ impl FieldWrapper {
         };
 
         Expr::Verbatim(quote! {
-            ::sycamore_state::RcCollectionSignal::new(data.into_iter().map(|a| #inner_type))
+            ::sycamore_state_manager::RcCollectionSignal::new(data.into_iter().map(|a| #inner_type))
         })
     }
     fn rc_enum_stateful_ctor<F: GetSetType>(field: &F) -> Expr {
@@ -192,7 +192,7 @@ impl FieldWrapper {
     }
     fn rc_enum_collection_ctor<F: GetSetType>(_field: &F) -> Expr {
         Expr::Verbatim(quote! {
-            ::sycamore_state::RcCollectionSignal::new(data)
+            ::sycamore_state_manager::RcCollectionSignal::new(data)
         })
     }
     fn rc_enum_bare_ctor<F: GetSetType>(_field: &F) -> Expr {

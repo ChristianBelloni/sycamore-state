@@ -41,8 +41,9 @@ impl FieldWrapper {
             insert_lifetime_into_generics(last, s_lifetime());
             last.ident = format_ref_ident(&last.ident);
         }
-        *new_field.mut_ty() =
-            Type::Verbatim(quote! { ::sycamore_state::RefCollectionSignal<'stateful, #inner_type>});
+        *new_field.mut_ty() = Type::Verbatim(
+            quote! { ::sycamore_state_manager::RefCollectionSignal<'stateful, #inner_type>},
+        );
 
         new_field
     }
@@ -62,8 +63,9 @@ impl FieldWrapper {
         let inner_type = is_collection(field).expect("Type must be a collection");
         let mut new_field = field.clone();
 
-        *new_field.mut_ty() =
-            Type::Verbatim(quote! { ::sycamore_state::RefCollectionSignal<'stateful, #inner_type>});
+        *new_field.mut_ty() = Type::Verbatim(
+            quote! { ::sycamore_state_manager::RefCollectionSignal<'stateful, #inner_type>},
+        );
 
         new_field
     }
@@ -120,7 +122,7 @@ impl FieldWrapper {
         };
 
         Expr::Verbatim(quote! {
-            unsafe{ ::sycamore_state::RefCollectionSignal::new(cx, data.#ident.into_iter().map(|a| #inner_type).collect::<Vec<_>>())}
+            unsafe{ ::sycamore_state_manager::RefCollectionSignal::new(cx, data.#ident.into_iter().map(|a| #inner_type).collect::<Vec<_>>())}
         })
     }
     fn to_ref_struct_stateful_ctor<F: GetSetType>(field: &F) -> Expr {
@@ -139,7 +141,7 @@ impl FieldWrapper {
     fn to_ref_struct_collection_ctor<F: GetSetType>(field: &F) -> Expr {
         let ident = field.ident();
         Expr::Verbatim(quote! {
-            unsafe{ ::sycamore_state::RefCollectionSignal::new(cx, data.#ident)}
+            unsafe{ ::sycamore_state_manager::RefCollectionSignal::new(cx, data.#ident)}
         })
     }
     fn to_ref_struct_bare_ctor<F: GetSetType>(field: &F) -> Expr {
@@ -177,7 +179,7 @@ impl FieldWrapper {
         };
 
         Expr::Verbatim(quote! {
-            unsafe{ ::sycamore_state::RefCollectionSignal::new(cx, data.into_iter().map(|a| #inner_type).collect::<Vec<_>>())}
+            unsafe{ ::sycamore_state_manager::RefCollectionSignal::new(cx, data.into_iter().map(|a| #inner_type).collect::<Vec<_>>())}
         })
     }
     fn to_ref_enum_stateful_ctor<F: GetSetType>(field: &F) -> Expr {
@@ -194,7 +196,7 @@ impl FieldWrapper {
     }
     fn to_ref_enum_collection_ctor<F: GetSetType>(_field: &F) -> Expr {
         Expr::Verbatim(quote! {
-            unsafe{ ::sycamore_state::RefCollectionSignal::new(cx, data)}
+            unsafe{ ::sycamore_state_manager::RefCollectionSignal::new(cx, data)}
         })
     }
     fn to_ref_enum_bare_ctor<F: GetSetType>(_field: &F) -> Expr {

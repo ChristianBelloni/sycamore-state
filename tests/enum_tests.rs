@@ -145,7 +145,6 @@ fn stateful_enum_test() {
 
         let inner_ref = match &ref_simple_enum {
             RefStatefulEnum::Variant1(data) => data.get(),
-            _ => unreachable!(),
         };
 
         assert_eq!(inner_ref.field1.get().as_str(), "test");
@@ -162,7 +161,6 @@ fn stateful_enum_test() {
 
         let inner_ref = match &ref_simple_enum {
             RefStatefulEnum::Variant1(data) => data.get(),
-            _ => unreachable!(),
         };
 
         assert_eq!(inner_ref.field1.get().as_str(), "test2");

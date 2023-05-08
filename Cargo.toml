@@ -1,15 +1,14 @@
 [package]
-name = "sycamore-state"
+name = "sycamore-state-manager"
 version = "0.0.1"
 edition = "2021"
-license = "MIT"
+license = "MIT OR Apache-2.0"
+description = "Derive macro for state management for the sycamore reactive ecosystem"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-sycamore-state-macros = { path = "./sycamore-state-macros" }
-sycamore-state-core = { path = "./sycamore-state-core" }
+sycamore-state-macros = { path = "./sycamore-state-macros", version = "0.0.1" }
+sycamore-state-core = { path = "./sycamore-state-core", version = "0.0.1" }
 
-sycamore = { version = "0.9.0-beta.1", features = [
-    "suspense",
-], git = "https://github.com/sycamore-rs/sycamore.git" }
+sycamore = "0.9.0-beta.1"
