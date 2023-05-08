@@ -1,7 +1,7 @@
 # Derive macro for State Management
 ## Overview
 [![Crates.io][crates-badge]][crates-url]
-[![Docs.rs][docs-badge][docs-url]]
+[![Docs.rs][docs-badge]][docs-url]
 
 [crates-badge]: https://img.shields.io/crates/v/sycamore-state-manager.svg
 [crates-url]: https://crates.io/crates/sycamore-state-manager
