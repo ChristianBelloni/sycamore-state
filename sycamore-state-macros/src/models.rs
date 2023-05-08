@@ -1,19 +1,19 @@
 use std::marker::PhantomData;
 
-use crate::utils::make_derive_features;
 use crate::utils::{
     collection_ident, extract_lifetimes, format_rc_ident, format_ref_ident,
     make_ref_derive_features, named_lifetime, s_lifetime, stateful_ident,
 };
+use crate::utils::{derived_ident, make_derive_features};
 use proc_macro2::*;
-use quote::quote;
 use quote::ToTokens;
+use quote::{format_ident, quote};
 use syn::token::{Enum, Struct};
 use syn::{
     punctuated::Punctuated, token::Comma, Attribute, Field, GenericParam, Generics, LifetimeParam,
     Variant,
 };
-use syn::{AngleBracketedGenericArguments, Type};
+use syn::{AngleBracketedGenericArguments, Meta, Type};
 use syn::{Expr, GenericArgument};
 
 pub(crate) trait GenericContainer {
@@ -423,6 +423,36 @@ impl GetSetType for FieldWrapper {
 impl FieldWrapper {
     pub(crate) fn is_collection(&self) -> bool {
         self.has_attribute(collection_ident())
+    }
+
+    pub(crate) fn is_derived(&self) {
+        let ident = derived_ident();
+        let binding = self.attrs();
+        let attr = binding.iter().find(|a| match &a.meta {
+            syn::Meta::Path(data) => false,
+            syn::Meta::List(data) => {
+                let data = &data.path;
+                if let Some(seg) = data.segments.last() {
+                    if seg.ident == ident {
+                        true
+                    } else {
+                        false
+                    }
+                } else {
+                    false
+                }
+            }
+            syn::Meta::NameValue(data) => {
+                dbg!(data);
+                false
+            }
+        });
+        if let Some(attr) = attr.cloned() {
+            if let Meta::List(data) = attr.meta {
+                let expr = syn::parse2::<Expr>(data.tokens).unwrap();
+                println!("{}", quote! {#expr}.to_string());
+            }
+        }
     }
 
     pub(crate) fn is_stateful(&self) -> bool {

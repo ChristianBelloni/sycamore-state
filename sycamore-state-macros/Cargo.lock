@@ -240,14 +240,14 @@ dependencies = [
 
 [[package]]
 name = "sycamore-state-core"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "sycamore",
 ]
 
 [[package]]
 name = "sycamore-state-macros"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "proc-macro2",
  "quote",

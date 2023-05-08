@@ -235,3 +235,7 @@ pub fn stateful_ident() -> Ident {
 pub fn collection_ident() -> Ident {
     format_ident!("collection")
 }
+
+pub fn derived_ident() -> Ident {
+    format_ident!("derived")
+}

@@ -9,7 +9,7 @@ use quote::{format_ident, quote};
 use syn::DeriveInput;
 use utils::extract_features_from_attrs;
 
-#[proc_macro_derive(State, attributes(state, collection))]
+#[proc_macro_derive(State, attributes(state, collection, derived))]
 pub fn entry_point(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     derive_stateful(input.into()).into()
 }
@@ -112,7 +112,9 @@ mod tests {
                     pub inner_ref: InnerRefState<'a>,
                     #[collection]
                     #[stateful]
-                    pub collection: Vec<String>
+                    pub collection: Vec<String>,
+                    #[derived(self.collection.len())]
+                    pub derived_state: i32
                 }
             }
             .into(),

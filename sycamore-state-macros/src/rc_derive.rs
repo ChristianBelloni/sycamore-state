@@ -8,6 +8,7 @@ impl FieldWrapper {
     pub fn to_rc_decl(&self) -> Box<dyn ToTokens> {
         let is_stateful = self.is_stateful();
         let is_collection = self.is_collection();
+        let is_derived = self.is_derived();
 
         match &self {
             FieldWrapper::Enum(data) => {
