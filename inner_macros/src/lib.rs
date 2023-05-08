@@ -9,7 +9,7 @@ use quote::{format_ident, quote};
 use syn::DeriveInput;
 use utils::extract_features_from_attrs;
 
-#[proc_macro_derive(State, attributes(stateful, collection))]
+#[proc_macro_derive(State, attributes(state, collection))]
 pub fn entry_point(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     derive_stateful(input.into()).into()
 }
@@ -34,7 +34,7 @@ fn derive_enum(
 ) -> TokenStream {
     let variants = data.variants;
     let mut features = FeatureModel::default();
-    extract_features_from_attrs(attrs.clone(), format_ident!("stateful"), &mut features);
+    extract_features_from_attrs(attrs.clone(), format_ident!("state"), &mut features);
     let deriver = Deriver::new_enum(struct_ident, generics, variants, features);
     let derived_rc_decl = deriver.derive_rc_decl();
     let derived_ref_decl = deriver.derive_ref_decl();
@@ -62,7 +62,7 @@ fn derive_struct(
     };
     let fields = fields.named;
     let mut features = FeatureModel::default();
-    extract_features_from_attrs(attrs.clone(), format_ident!("stateful"), &mut features);
+    extract_features_from_attrs(attrs.clone(), format_ident!("state"), &mut features);
     let deriver = Deriver::new_struct(struct_ident, generics, fields, features);
 
     let derived_rc_decl = deriver.derive_rc_decl();

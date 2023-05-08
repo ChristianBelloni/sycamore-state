@@ -22,7 +22,7 @@ pub fn extract_features_from_attrs(
             continue;
         }
         let tkns = attr.tokens.clone();
-        println!("{:?}", tkns);
+
         for tkn in tkns.into_iter() {
             match tkn {
                 proc_macro2::TokenTree::Ident(ident) => match ident.to_string().as_str() {
@@ -229,7 +229,7 @@ pub(crate) fn is_collection<F: GetSetType>(field: &F) -> Option<Type> {
 }
 
 pub fn stateful_ident() -> Ident {
-    format_ident!("stateful")
+    format_ident!("state")
 }
 
 pub fn collection_ident() -> Ident {
