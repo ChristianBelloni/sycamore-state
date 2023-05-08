@@ -2,8 +2,8 @@
 name = "sycamore-state-macros"
 version = "0.0.1"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "MIT OR Apache-2.0"
+description = "sycamore-state proc macro implementation"
 
 [lib]
 proc-macro = true
