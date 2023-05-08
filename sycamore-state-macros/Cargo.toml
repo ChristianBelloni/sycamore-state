@@ -1,6 +1,6 @@
 [package]
 name = "sycamore-state-macros"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 license = "MIT OR Apache-2.0"
 description = "sycamore-state proc macro implementation"
@@ -9,7 +9,7 @@ description = "sycamore-state proc macro implementation"
 proc-macro = true
 
 [dependencies]
-sycamore-state-core = { path = "../sycamore-state-core", version = "0.0.1" }
+sycamore-state-core = { path = "../sycamore-state-core", version = "0.0.2" }
 syn = { version = "2.0.15", features = ["full", "extra-traits"] }
 quote = "1.0.26"
 proc-macro2 = "1.0.56"
